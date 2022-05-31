@@ -55,6 +55,7 @@ const thoughtSchema = new Schema({
 // this is required to use getters as JSOn
 {
     toJSON: {
+        virtuals: true,
         getters: true
     },
     id: false
