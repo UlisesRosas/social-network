@@ -4,6 +4,32 @@ const { Thought, User } = require('../models');
 // Performs CRUD operations on thought 
 const thoughtController = {
     // TODO:
+   
+        // get all thoughts
+        getAllThoughts(req, res) {
+            Thought.find({})
+            .then(dbUserData => res.json(dbUserData))
+            .catch(err => {
+                console.log(err);
+                res.status(400).json(err);
+            });
+        },
+    
+    // find one thougth by id
+    getThoughtById({params}, res) {
+        Thought.findOne(
+            {_id: params.id}
+        )
+        .populate({
+            path: 'reactions',
+            select: '-__v'
+        })
+        .select('-__v')
+        .then(dbThoughtData => res.json(dbThoughtData))
+        .catch(err => {conaole.log(err); res.status(400)});
+    },
+
+
     // add thought to user
     addThought({ params }, body) {
         // console.log(params)
