@@ -14,7 +14,7 @@ const userSchema = new Schema(
             required: true,
             unique: [true, 'Email is Required!'],
             // email validation, regex to match email
-            match: [/.+@.+\..+/, 'Npt an Email address!']
+            match: [/.+@.+\..+/, 'Not an Email address!']
         },
         thoughts: [
             {
