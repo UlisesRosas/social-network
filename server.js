@@ -1,20 +1,18 @@
-// Importing packages
+
+const mongoose = require('mongoose');
 const express = require('express');
-const db = require('./config/connection')
 
 const app = express();
-// Port number options
 const PORT = process.env.PORT || 3001;
 
-// middlewear 
-app.use(express.json)
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public')); 
-app.use(require('./routes'))
+app.use(require('./routes'));
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/socialAPI', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
 
-db.once('open',() => {
-    app.listen(PORT, ()=> console.log(`🛸 Mothership connected on localhost:${PORT}`));
-})
-
-
+app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));

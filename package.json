@@ -1,25 +1,26 @@
 {
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.3.3",
+    "mongoose-unique-validator": "^3.0.0",
+    "nodemon": "^2.0.16"
+  },
   "name": "social-network",
   "version": "1.0.0",
-  "description": "A social network API that is built with NoSQL database for handling large amounts of unstructured data",
   "main": "index.js",
-  "dependencies": {
-    "express": "^4.17.3",
-    "mongoose": "^6.3.1"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/UlisesRosas/social-network.git"
+    "url": "git+https://github.com/MCORTEZM1/SocialMedia-API.git"
   },
   "keywords": [],
-  "author": "Ulises Rosas",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/UlisesRosas/social-network/issues"
+    "url": "https://github.com/MCORTEZM1/SocialMedia-API/issues"
   },
-  "homepage": "https://github.com/UlisesRosas/social-network#readme"
+  "homepage": "https://github.com/MCORTEZM1/SocialMedia-API#readme",
+  "description": ""
 }
