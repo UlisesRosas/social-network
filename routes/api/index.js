@@ -6,4 +6,4 @@ const reactionRoutes = require('./reaction-routes');
 router.use('/users', userRoutes);
 router.use('/thoughts', thoughtRoutes);
 router.use('/reactions', reactionRoutes);
-mosule.exports = router;
+module.exports = router;
