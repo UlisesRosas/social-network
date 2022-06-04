@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 // this imports the format function in the utils folder
 const format = require('../utils/dateFormat')
 
@@ -35,7 +35,7 @@ const thoughtSchema = new Schema({
         type: String,
         // required: true,
         minLength: 1,
-        maxLength: 280,
+        maxLength: 280
     },
     createdAt: {
         type: Date,
@@ -46,6 +46,7 @@ const thoughtSchema = new Schema({
     },
     username: {
         type: String,
+        // required:[true,'Must include username']
     },
     // connects reaction schema as a sub document
     reactions: [reactionSchema],
@@ -61,7 +62,7 @@ const thoughtSchema = new Schema({
 }
 );
 
-thoughtSchema.virtual ('reactionCount').get(function() {
+thoughtSchema.virtual('reactionCount').get(function() {
     // returns the number of friends in the friends array
     return this.reactions.length;
 });

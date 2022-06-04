@@ -6,9 +6,10 @@ const reactionController = {
 
     // add reaction to thought
     addReaction({ params, body }, res) {
+        console.log(body)
         Thought.findOneAndUpdate(
             { _id: params.thoughtId },
-            { $push: { reactions: body } },
+            { $push: { reactions: params.thougthId }},
             { new: true, runValidators: true }
         )
             .then(dbUserData => {

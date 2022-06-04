@@ -18,12 +18,12 @@ router
     .get(getThoughtById);
     
     router
-    .route('/:Id')
+    .route('/:id')
+    .put(updateThought)
     .post(addThought);
     
     router
-    .route('/:thougthId/:userId')
-    .put(updateThought)
+    .route('/:userId/:thougthId')
     .delete(removeThought);
 
 module.exports = router;

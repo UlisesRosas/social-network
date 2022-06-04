@@ -3,7 +3,6 @@ const { Thought, User } = require('../models');
 
 // Performs CRUD operations on thought 
 const thoughtController = {
-    // TODO:
    
         // get all thoughts
         getAllThoughts(req, res) {
@@ -17,8 +16,9 @@ const thoughtController = {
     
     // find one thougth by id
     getThoughtById({params}, res) {
+        console.log(params)
         Thought.findOne(
-            {_id: params.id}
+            {_id: params.thoughtId}
         )
         .populate({
             path: 'reactions',
@@ -26,18 +26,20 @@ const thoughtController = {
         })
         .select('-__v')
         .then(dbThoughtData => res.json(dbThoughtData))
-        .catch(err => {conaole.log(err); res.status(400)});
+        .catch(err => {
+            conaole.log(err); 
+            res.status(400);
+        });
     },
 
 
     // add thought to user
     addThought({ params, body }, res) {
-        console.log(params);
-        
+        console.log(body)
         Thought.create(body)
             .then(({ _id }) => {
                 return User.findOneAndUpdate(
-                    { _id: params.Id },
+                    { _id: params.id },
                     { $push: { thoughts: _id } },
                     { new: true }
                 );
@@ -62,6 +64,7 @@ const thoughtController = {
 
     // remove a thought
     removeThought({ params }, res) {
+        // console.log(params)
         Thought.findOneAndDelete(
             { _id: params.thoughtId }
         )

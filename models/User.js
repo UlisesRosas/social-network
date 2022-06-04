@@ -1,5 +1,5 @@
 // Mongoose schema constructor
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 const userSchema = new Schema(
     {
