@@ -31,15 +31,20 @@ const thoughtController = {
 
 
     // add thought to user
-    addThought({ params }, body) {
-        // console.log(params)
+    addThought({ params, body }, res) {
+        console.log(params);
+        
         Thought.create(body)
             .then(({ _id }) => {
                 return User.findOneAndUpdate(
-                    { _id: params.userId },
-                    { $push: { comments: _id } },
+                    { _id: params.Id },
+                    { $push: { thoughts: _id } },
                     { new: true }
                 );
+                // .populate({
+                //     path: 'thoughts friends',
+                //     select: '-__v'
+                // })
             })
             .then(dbUserData => {
                 // console.log(dbUserData)
@@ -51,7 +56,7 @@ const thoughtController = {
             })
             .catch(err => res.json(err));
 
-    },
+},
 
    
 

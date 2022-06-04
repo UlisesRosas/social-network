@@ -15,11 +15,12 @@ const userController = {
     // get one user by ObjectId
     // gets the id from the params so use params as one of the two functin parameters
     getUserById({params}, res) {
+        console.log(params.id)
         // this is the field in which the id is located
         User.findOne({ _id: params.id })
         // this is to populate the Thought model in to the user model
         .populate({
-            path: 'thought',
+            path: 'thoughts',
             // it excludes this field
             select: '-__v'
         })

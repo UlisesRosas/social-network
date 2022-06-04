@@ -33,7 +33,7 @@ const reactionSchema = new Schema({
 const thoughtSchema = new Schema({
     thoughtText: {
         type: String,
-        required: true,
+        // required: true,
         minLength: 1,
         maxLength: 280,
     },
@@ -46,7 +46,6 @@ const thoughtSchema = new Schema({
     },
     username: {
         type: String,
-        required: true,
     },
     // connects reaction schema as a sub document
     reactions: [reactionSchema],
